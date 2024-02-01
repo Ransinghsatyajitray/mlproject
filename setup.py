@@ -12,7 +12,7 @@ def get_requirements(file_paths:str)->List[str]:
         requirements=file_obj.readlines()
         requirements=[req.replace('\n',"") for req in requirements]
         if HYPEN_E_DOT in requirements:
-            requirements.remove(HYPEN_E_DOT) # in the setup.py we are installing just the packages and not the set up.py so we are removing -e . which is also a package
+            requirements.remove(HYPEN_E_DOT)
     return requirements        
 
 
@@ -22,5 +22,5 @@ setup(
     author='Ransingh',
     author_email = 'satyajit239@gmail.com',
     packages=find_packages(),
-    install_requires=  get_requirements('requirements.txt')     #  ['pandas','numpy', 'seaborn'] wrong approach to mention explicitly as we may require 100s of packages 
+    install_requires=  get_requirements('requirements.txt')
 )

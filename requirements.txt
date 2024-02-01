@@ -2,4 +2,4 @@ pandas
 numpy
 seaborn
 typing
--e .# this will automatically trigger the setup.py file
+-e .
