@@ -4,4 +4,7 @@ seaborn
 typing
 matplotlib
 plotnine
--e .
+scikit-learn
+catboost
+xgboost
+#-e .
