@@ -6,5 +6,6 @@ matplotlib
 plotnine
 scikit-learn
 catboost
-xgboost
+#xgboost
+dill
 #-e .
