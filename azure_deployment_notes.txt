@@ -1,6 +1,3 @@
-# End to End Machine Learning Project
-
-# deployment to azure , creating webapp
 1. signing to azure
 2. create resourese
 3. create webapp > subs / RG/ Web app name (app will be named webappnamewe havegiven.azurewebsites.net
@@ -44,7 +41,7 @@ build ---
 1. set up job
 2. run actions/checkout@v2 - it is syncing with which repo, it is seeing the app runner (it facilitate the automatically build is happending when the changes are happening), it is fetching the repo 
 3. set up python version - 
-4. create and start virtual environment
+4. create and start virtual environement
 5. Install dependencies
 6. upload artifacts for deployment jobs
 7. post run actions/checkout@v2 (what ever cleanup is required after github repo is synced with the cloud)
@@ -57,8 +54,9 @@ the entire steps mentioned on the build is happening line by line
 deployment ---
 
 
-In github action we will see the url below the flowchart (under deploy)
-once we click on the url we will be able to see the entire project
 
 
-Once deployed and tested delete the webapp(as it may incur charges)
+
+
+
+
