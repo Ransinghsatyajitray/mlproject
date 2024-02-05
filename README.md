@@ -62,3 +62,88 @@ once we click on the url we will be able to see the entire project
 
 
 Once deployed and tested delete the webapp(as it may incur charges)
+
+
+
+# Step By Step Production Grade Machine Learning Projects Deployment Azure Web App MLOPS
+
+1. web app -> docker image -> private image 
+2. docker image -> container registry (azure)
+3. once we upload we can create image, this can be pulled once we create azure web app
+
+
+azure > container registry -> create a new one
+> subs , RG, Registry name, location
+> review and create
+> go to resource
+> access key - admin user enable, copy the login server and keep it handy
+, password, password2
+
+> go to overview
+
+Home > create resource > web app - sub, rg, name, publish - docker container
+os - linux, region,   docker - option - single container, image source ACR, Registry, image - empty (we have to build it from our specific repo)
+
+we need to have docker desktop
+
+docker build -t urlofcontainerregistry.azurecr.io(we had saved it)/ourapplicationname:latest . <it will take some time>
+
+docker login urlofcontainerregistry(we had saved it).azurecr.io, it will ask for username and password
+
+docker push urlofcontainerregistry.azurecr.io(we had saved it)/ourapplicationname:latest  <the entire docker image is pushed to container registry>  it will take some min
+
+
+We can see our image file in the acr
+
+Create the web app
+-------------------
+subs, rg, name, publish -docker container
+docker - single container, image cource acr, registry name, automatically image will be shown
+create and validate
+create
+now when we go to the RG, we can see the web app
+when the app is created, go to resource
+go to deployment center -> we will get many option
+keep continuous deployment to on
+source - github action
+organization, repo, branch
+registry setting - registry source, subscription id, authentication - admin credentials, registry, image  -> save (saving container configuration)
+
+in the github we will see .github/ workflows getting showed and github action is running
+
+we will see the entire build and deployment pipeline is executed(we will get email too)
+
+
+Build ->
+1. setup job
+2. run actions/checkout@v2
+3. set up docker buildx
+4. login to registry
+5. build and push container image to registry
+6. post build and push continaer image to registry
+7. post login to registry
+8. post set up docker buildx
+9. post run actions/checkout@v2
+
+
+deploy ->
+1. setup job
+2. deploy to azure web app
+3. complete job (we will get the url) 2 min to load
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
