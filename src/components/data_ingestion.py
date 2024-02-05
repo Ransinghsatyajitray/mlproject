@@ -9,8 +9,8 @@ from src.components.data_transformation import DataTransformation
 from src.components.data_transformation import DataTransformationConfig
 
 
-#from src.components.model_trainer import ModelTrainerConfig
-#from src.components.model_trainer import ModelTrainer
+from src.components.model_trainer import ModelTrainerConfig
+from src.components.model_trainer import ModelTrainer
 
 # When ever we are performing data ingestion component there should be some input that may be required by data ingestion component , the input can be 
 # like where we want to save the training data , test data , raw data and we keep it in new class. In data ingestion component any input we would be requiring 
@@ -56,6 +56,10 @@ if __name__ == "__main__":
     train_data, test_data = obj.initiate_data_ingestion()
     
     data_transformation = DataTransformation()
-    data_transformation.initiate_data_transformation(train_data, test_data)                    
+    # _ means we dont want them
+    train_arr,test_arr,_= data_transformation.initiate_data_transformation(train_data, test_data)
+    
+    modeltrainer = ModelTrainer()
+    print(modeltrainer.initiate_model_trainer(train_arr, test_arr))                    
 
-
+# we can also work on model pusher to aws, azure
